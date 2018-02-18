@@ -10,25 +10,25 @@
                     {% csrf_token %}
             		<div class="form-group">
             			<label for="editName">Name</label>
-                        <input type="text" class="form-control" id="editName" placeholder="Enter name" name="name" value="{{ movie.fields.Name }}"/>
+                        <input type="text" class="form-control" id="editName" placeholder="Name" name="name" value="{{ movie.fields.Name }}"/>
             		</div>
 
                     <div class="form-group">
-                    	<label for="editURL">Image URL</label>
-                        <input type="text" class="form-control" id="editURL" placeholder="url" name="url" value="{{movie.fields.Pictures.0.url}}" />
+                    	<label for="editURL">Bild</label>
+                        <input type="text" class="form-control" id="editURL" placeholder="Bild URL" name="url" value="{{movie.fields.Pictures.0.url}}" />
                     </div>
 
                      <div class="form-group">
-                    	<label for="editRating">Rating</label>
+                    	<label for="editRating">Bewertung</label>
                         <input type="number" class="form-control" id="editRating" placeholder="1-10" name="rating" value="{{movie.fields.Rating}}" min="1" max="10"/>
                     </div>
 
                      <div class="form-group">
-                    	<label for="editNotes">Notes</label>
+                    	<label for="editNotes">Notizen</label>
                          <textarea class="form-control" id="editNotes" placeholder="Add notes" name="notes"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Speichern</button>
 
             	</form>
             </div>
