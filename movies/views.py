@@ -10,7 +10,7 @@ AT = Airtable(os.environ.get('AIRTABLE_MOVIESTABLE_BASE_ID'),
 
 # Create your views here.
 def home_page(request):
-    user_query = str(request.GET.get('query', ''))
+    user_query = str(request.GET.get('suche', ''))
     search_result = AT.get_all(formula="FIND('" + user_query.lower() + "', LOWER({Name}))")
     stuff_for_frontend = {'search_result': search_result}
     return render(request, 'movies/movies_stuff.html', stuff_for_frontend)
@@ -27,9 +27,9 @@ def create(request):
 
         try:
             response = AT.insert(data)
-            messages.success(request, 'New movie added: {}'.format(response['fields'].get('Name')))
+            messages.success(request, 'Neuer Film erstellt: {}'.format(response['fields'].get('Name')))
         except Exception as e:
-            messages.warning(request, 'Got an error when trying to create new movie: {}'.format(e))
+            messages.warning(request, 'Fehlermeldung beim Film erstellen: {}'.format(e))
     return redirect('/')
 
 
@@ -43,16 +43,16 @@ def edit(request, movie_id):
         }
         try:
         	response = AT.update(movie_id, data)
-        	messages.success(request, 'Updated movie: {}'.format(response['fields'].get('Name')))
+        	messages.success(request, 'Film bearbeitet: {}'.format(response['fields'].get('Name')))
         except Exception as e:
-            messages.warning(request, 'Got an error when trying to update a movie: {}'.format(e))
+            messages.warning(request, 'Fehlermeldung beim Film bearbeiten: {}'.format(e))
     return redirect('/')
 
 def delete(request, movie_id):
     try:
         movie_name = AT.get(movie_id)['fields'].get('Name')
         response = AT.delete(movie_id)
-        messages.warning(request, 'Deleted movie: {}'.format(movie_name))
+        messages.warning(request, 'Film gelöscht: {}'.format(movie_name))
     except Exception as e:
-        messages.warning(request, 'Got an error when trying to delete a movie: {}'.format(e))
+        messages.warning(request, 'Fehlermeldung beim Film löschen: {}'.format(e))
     return redirect('/')
