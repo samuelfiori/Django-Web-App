@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
         <link rel="stylesheet" href="{% static 'movies/app.css' %}" />
 
-        <title>My Movies</title>
+        <title>Sam's Movies</title>
 	</head>
 
     <body>
@@ -19,17 +19,17 @@
     		<nav class="nav">
     			<div class="container">
     				<div class="nav__menu">
-    					<a class="nav__header" href="/">Clever Movie</a>
+    					<a class="nav__header" href="/">Sam's Movies E Su Movies</a>
                         <div class="col-md-5 pull-right">
                         	<form name="search" action="" class="form-inline">
                         		<div class="form-group">
-                        			<input type="text" name="query" class="form-control" value="{{request.GET.query}}" />
-                                    <input type="submit" class="btn btn-primary" value="Search" />
+                        			<input type="text" name="suche" class="form-control" value="{{request.GET.query}}" />
+                                    <input type="submit" class="btn btn-primary" value="suche" />
                         		</div>
                         	</form>
                         </div>
 
-                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create</button>
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Erstellen</button>
     				</div>
     			</div>
     		</nav>
